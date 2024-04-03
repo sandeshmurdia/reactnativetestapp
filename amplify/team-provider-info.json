@@ -1,0 +1,51 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-reactnativetestapp-dev-143951-authRole",
+      "UnauthRoleArn": "arn:aws:iam::851725310188:role/amplify-reactnativetestapp-dev-143951-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::851725310188:role/amplify-reactnativetestapp-dev-143951-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-reactnativetestapp-dev-143951-deployment",
+      "UnauthRoleName": "amplify-reactnativetestapp-dev-143951-unauthRole",
+      "StackName": "amplify-reactnativetestapp-dev-143951",
+      "StackId": "arn:aws:cloudformation:us-east-1:851725310188:stack/amplify-reactnativetestapp-dev-143951/76f15fe0-dc62-11ee-8e5d-0eae52a7b8c3",
+      "AmplifyAppId": "d2uht5ji5xjpdg"
+    },
+    "categories": {
+      "function": {
+        "reactnativetestappac83df51": {
+          "deploymentBucketName": "amplify-reactnativetestapp-dev-143951-deployment",
+          "s3Key": "amplify-builds/reactnativetestappac83df51-6c5a32784c72486b506a-build.zip"
+        },
+        "reactnativetestapp358409d8": {
+          "deploymentBucketName": "amplify-reactnativetestapp-dev-143951-deployment",
+          "s3Key": "amplify-builds/reactnativetestapp358409d8-3573427049626b6b4f76-build.zip"
+        },
+        "reactnativetestapp9819873e": {
+          "deploymentBucketName": "amplify-reactnativetestapp-dev-143951-deployment",
+          "s3Key": "amplify-builds/reactnativetestapp9819873e-414d6b686e4855564455-build.zip"
+        },
+        "reactnativetestappa9a52ab7": {
+          "deploymentBucketName": "amplify-reactnativetestapp-dev-143951-deployment",
+          "s3Key": "amplify-builds/reactnativetestappa9a52ab7-7232544c7463372b5858-build.zip"
+        },
+        "reactnativetestapp2567a2a9": {
+          "deploymentBucketName": "amplify-reactnativetestapp-dev-143951-deployment",
+          "s3Key": "amplify-builds/reactnativetestapp2567a2a9-714f362b484a4f614263-build.zip"
+        }
+      },
+      "api": {
+        "awsamplify": {},
+        "test": {},
+        "testcase": {}
+      },
+      "auth": {
+        "reactnativetestapp0fe6900c": {}
+      },
+      "storage": {
+        "testdata": {},
+        "testreact": {}
+      }
+    }
+  }
+}

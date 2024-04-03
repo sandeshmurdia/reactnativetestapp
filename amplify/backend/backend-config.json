@@ -1,0 +1,207 @@
+{
+  "api": {
+    "awsamplify": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "reactnativetestappac83df51"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "reactnativetestapp2567a2a9"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "test": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "reactnativetestapp9819873e"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "testcase": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "reactnativetestapp358409d8"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "reactnativetestappa9a52ab7"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "auth": {
+    "reactnativetestapp0fe6900c": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "function": {
+    "reactnativetestapp2567a2a9": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "reactnativetestapp358409d8": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "reactnativetestapp9819873e": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "reactnativetestappa9a52ab7": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "reactnativetestappac83df51": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_reactnativetestapp2567a2a9_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "reactnativetestapp2567a2a9"
+        }
+      ]
+    },
+    "AMPLIFY_function_reactnativetestapp2567a2a9_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "reactnativetestapp2567a2a9"
+        }
+      ]
+    },
+    "AMPLIFY_function_reactnativetestapp358409d8_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "reactnativetestapp358409d8"
+        }
+      ]
+    },
+    "AMPLIFY_function_reactnativetestapp358409d8_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "reactnativetestapp358409d8"
+        }
+      ]
+    },
+    "AMPLIFY_function_reactnativetestapp9819873e_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "reactnativetestapp9819873e"
+        }
+      ]
+    },
+    "AMPLIFY_function_reactnativetestapp9819873e_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "reactnativetestapp9819873e"
+        }
+      ]
+    },
+    "AMPLIFY_function_reactnativetestappa9a52ab7_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "reactnativetestappa9a52ab7"
+        }
+      ]
+    },
+    "AMPLIFY_function_reactnativetestappa9a52ab7_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "reactnativetestappa9a52ab7"
+        }
+      ]
+    },
+    "AMPLIFY_function_reactnativetestappac83df51_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "reactnativetestappac83df51"
+        }
+      ]
+    },
+    "AMPLIFY_function_reactnativetestappac83df51_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "reactnativetestappac83df51"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "testdata": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "testreact": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    }
+  }
+}

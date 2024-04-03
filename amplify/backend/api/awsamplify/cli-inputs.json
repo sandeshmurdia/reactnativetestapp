@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "paths": {
+    "/items": {
+      "name": "/items",
+      "lambdaFunction": "reactnativetestappac83df51",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/test": {
+      "name": "/test",
+      "lambdaFunction": "reactnativetestapp2567a2a9",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

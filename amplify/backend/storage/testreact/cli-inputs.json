@@ -1,0 +1,10 @@
+{
+  "resourceName": "testreact",
+  "tableName": "testreact",
+  "partitionKey": {
+    "fieldName": "fruit",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
