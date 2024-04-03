@@ -214,8 +214,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const MyStack = () => {
   return (
     <>  
-    <View>
-    <ScreenNavigation>
+    <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
           name="Home"
@@ -224,8 +223,7 @@ const MyStack = () => {
         />
         <Stack.Screen name="Profile" component={ProfileScreen} />
       </Stack.Navigator>
-     </ScreenNavigation>
-     </View>
+     </NavigationContainer>
     </>
   );
 };
