@@ -11,25 +11,23 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-
-
-
 import axios from 'axios';
 import zipy from './zipy-mobilesdk-reactnative/src/index';
 import { get } from '@aws-amplify/api';
 
 const HomeScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
   const handleButton1Click = () => {
-zipy.logMessage({message : 'Your custom message', exceptionObj: {'s': 'Your custom message'}});
-
+    console.log('button 1');
+    zipy.logMessage({message : 'Your custom message', exceptionObj: {'s': 'Your custom message'}});
   };
 
   const handleButton2Click = () => {
+    console.log('button 2');
     zipy.logException({message : 'Your custom message', exceptionObj: {'asasas': 'Your custom message'}});
-
   };
 
   const handleButton4Click = async () => {
+    console.log('button 4');
     try {
      let d = e;
       console.log(d)
@@ -41,6 +39,7 @@ zipy.logMessage({message : 'Your custom message', exceptionObj: {'s': 'Your cust
 
   
   const handleButton3Click = async () => {
+    console.log('button 3');
     const url = 'https://jsonplaceholder.typicode.com/posts';
   
     // Define the custom headers
@@ -81,6 +80,7 @@ zipy.logMessage({message : 'Your custom message', exceptionObj: {'s': 'Your cust
   
   const handleButton5Click = () => {
     // Try to access an undefined variable (reference error)
+    console.log('button 5');
 
   
     const url = 'https://jsonplaceholder.typicode.com/todos';
@@ -178,8 +178,5 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 });
-
-
-
 
 export default HomeScreen;

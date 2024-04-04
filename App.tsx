@@ -201,7 +201,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Button, Text, View } from 'react-native';
 import HomeScreen from './Homescreen';
-import { ScreenNavigation } from './zipy-mobilesdk-reactnative/src/index';
+import { GestureCapture, ScreenNavigation } from './zipy-mobilesdk-reactnative/src/index';
 
 
 type RootStackParamList = {
@@ -232,7 +232,13 @@ const ProfileScreen: React.FC<{ navigation: any; route: any }> = ({
   navigation,
   route,
 }) => {
-  return <Text style={{color: 'black'}}>This is {route.params.name}'s profile</Text>;
+  return (
+  <>
+  <GestureCapture>
+  <Text style={{color: 'black'}}>This is {route.params.name}'s profile</Text>
+  </GestureCapture>
+  </>
+  )
 };
 
 export default MyStack;
