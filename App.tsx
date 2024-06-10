@@ -32,7 +32,7 @@
 // } from '@aws-amplify/ui-react-native';
 
 // import axios from 'axios';
-// import zipy from 'zipy-react-native';
+// import zipy from './src';
 // import {get} from '@aws-amplify/api';
 
 // const App = () => {
@@ -194,14 +194,22 @@
 //   },
 // });
 
-// export default withAuthenticator(App);
+// export default App;
 
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Button, Text, View } from 'react-native';
+import { Button, Text, View , StyleSheet} from 'react-native';
 import HomeScreen from './Homescreen';
-import { ScreenNavigation } from './zipy-mobilesdk-reactnative/src/index';
+import zipy, { ScreenNavigation } from './src';
+import * as Sentry from '@sentry/react-native';
+
+Sentry.init({
+  dsn: 'https://4e9a8813df40f1594edd8111ac96e536@o4507406330888192.ingest.us.sentry.io/4507406535229440',
+
+  // uncomment the line below to enable Spotlight (https://spotlightjs.com)
+  // enableSpotlight: __DEV__,
+});
 
 
 type RootStackParamList = {
@@ -211,10 +219,15 @@ type RootStackParamList = {
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-const MyStack = () => {
+const MyApp = () => {
+  setTimeout(async ()=>{
+    // const a=  await zipy.getCurrentSessionUrl();
+    console.log(a)
+  },2000)
+
+
   return (
-    <>  
-    <NavigationContainer>
+       <NavigationContainer onStateChange={ScreenNavigation}>
       <Stack.Navigator>
         <Stack.Screen
           name="Home"
@@ -224,15 +237,36 @@ const MyStack = () => {
         <Stack.Screen name="Profile" component={ProfileScreen} />
       </Stack.Navigator>
      </NavigationContainer>
+
+  );
+
+  
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+
+const ProfileScreen: React.FC<{navigation: any; route: any}> = ({
+  navigation,
+  route,
+}) => {
+  const handleTap = () => {
+    console.log('Home screen tapped!');
+  };
+  return (
+    <>
+    <View>
+    <Text>Welcome to the Home Screen!</Text>
+      <Button zipy-label="CardContainer" title="Tap me on Home" />
+  </View>
+    <Text sentry-label="CardContain22er" style={{color: 'black'}}>This is {route.params.name}'s profile</Text>
     </>
   );
 };
 
-const ProfileScreen: React.FC<{ navigation: any; route: any }> = ({
-  navigation,
-  route,
-}) => {
-  return <Text style={{color: 'black'}}>This is {route.params.name}'s profile</Text>;
-};
 
-export default MyStack;
+
+export default Sentry.wrap(MyApp);

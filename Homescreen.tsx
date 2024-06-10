@@ -15,26 +15,36 @@ import {
 
 
 import axios from 'axios';
-import zipy from './zipy-mobilesdk-reactnative/src/index';
+import zipy from './src';
 import { get } from '@aws-amplify/api';
+// import Bugsnag from '@bugsnag/react-native';
+import * as Sentry from "@sentry/react-native";
+import Bugsnag from '@bugsnag/react-native';
 
 const HomeScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
   const handleButton1Click = () => {
-zipy.logMessage({message : 'Your custom message', exceptionObj: {'s': 'Your custom message'}});
+// zipy.logMessage({message : 'Your custom message', exceptionObj: {'s': 'Your custom message'}});
 
   };
 
   const handleButton2Click = () => {
-    zipy.logException({message : 'Your custom message', exceptionObj: {'asasas': 'Your custom message'}});
+    // zipy.logException({message : 'Your custom message', exceptionObj: {'asasas': 'Your custom message'}});
+    Sentry.nativeCrash();
+
+  };
+
+
+  const handleButton6Click = () => {
+    // zipy.logException({message : 'Your custom message', exceptionObj: {'asasas': 'Your custom message'}});
+    Bugsnag.notify(new Error('Test error'))
 
   };
 
   const handleButton4Click = async () => {
     try {
      let d = e;
-      console.log(d)
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error(error);
     }
 };
 
@@ -82,7 +92,8 @@ zipy.logMessage({message : 'Your custom message', exceptionObj: {'s': 'Your cust
   const handleButton5Click = () => {
     // Try to access an undefined variable (reference error)
 
-  
+    // Bugsnag.notify(new Error('Test error'))
+
     const url = 'https://jsonplaceholder.typicode.com/todos';
   
     // Define the custom headers
@@ -110,6 +121,8 @@ zipy.logMessage({message : 'Your custom message', exceptionObj: {'s': 'Your cust
       .then(response => response.json())
       .then(json => console.log('Response:', json))
       .catch(error => console.error('An error occurred:', error));
+
+      throw new Error('My first Sentry error!');
   };
   
   // const handleButton4Click = () => {
@@ -120,18 +133,18 @@ zipy.logMessage({message : 'Your custom message', exceptionObj: {'s': 'Your cust
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
         <Button
-          title="Zipy logs"
+          title="p logs"
           onPress={handleButton1Click}
           color="#841584" // Change the color if needed
-          accessibilityLabel="Zipy logs"
+          accessibilityLabel="p logs"
         />
       </View>
       <View style={styles.buttonContainer}>
         <Button
-          title="Zipy Exception"
+          title="p Exception"
           onPress={handleButton2Click}
           color="#F39C12" // Change the color if needed
-          accessibilityLabel="Zipy Exception"
+          accessibilityLabel="p Exception"
         />
       </View>
       <View style={styles.buttonContainer}>
@@ -156,6 +169,14 @@ zipy.logMessage({message : 'Your custom message', exceptionObj: {'s': 'Your cust
           onPress={handleButton5Click}
           color="#DF9DFD" // Change the color if needed
           accessibilityLabel="Fetch get network call"
+        />
+      </View>
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Fetch ge"
+          onPress={handleButton6Click}
+          color="#DF9DFD" // Change the color if needed
+          accessibilityLabel="Fetch ge"
         />
       </View>
       <View style={styles.buttonContainer}>
