@@ -12,7 +12,7 @@ export const logException = async (
 ) => {
 // console.log('zipy exceptionr');
 
-  if (data?.data?.logs_capture) {
+  if ((data?.data?.custom_logs)) {
     try {
      if(maxLength >= 0){
       message = message.substring(0,maxLength);

@@ -199,7 +199,7 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Button, Text, View , StyleSheet} from 'react-native';
+import { Button, Text, View , StyleSheet, TextInput} from 'react-native';
 import HomeScreen from './Homescreen';
 import zipy, { ScreenNavigation } from './src';
 import * as Sentry from '@sentry/react-native';
@@ -253,8 +253,15 @@ const ProfileScreen: React.FC<{navigation: any; route: any}> = ({
   navigation,
   route,
 }) => {
+  const [text, setText] = React.useState('');
+
   const handleTap = () => {
     console.log('Home screen tapped!');
+  };
+
+  const handleSubmit = () => {
+    console.log('Submit button pressed!');
+    // This function currently doesn't do anything
   };
   return (
     <>
@@ -263,10 +270,17 @@ const ProfileScreen: React.FC<{navigation: any; route: any}> = ({
       <Button zipy-label="CardContainer" title="Tap me on Home" />
   </View>
     <Text sentry-label="CardContain22er" style={{color: 'black'}}>This is {route.params.name}'s profile</Text>
+    <TextInput
+        style={{ height: 40, borderColor: 'gray', borderWidth: 1, margin: 10, paddingLeft: 5 }}
+        placeholder="Type here"
+        value={text}
+        onChangeText={setText}
+      />
+      {/* <Button title="Submit" onPress={handleSubmit} /> */}
     </>
   );
 };
 
 
 
-export default Sentry.wrap(MyApp);
+export default (MyApp);

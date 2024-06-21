@@ -24,6 +24,12 @@ export const formatTimestamp =async (timestamp) => {
    return `${formattedTimeDifference}`;
 };
 
+export const formatTimestampSnapshot =async () => {
+  let startTime = await AsyncStorage.getItem('session_starttime');
+  let timeat = (Date.now() -startTime);
+  return `${(Math.round(timeat)).toString()}`;
+};
+
 export const createRequestObjdevice =async (event) => {
     const sessionid = (await AsyncStorage.getItem("session_id"));
     const req_body = {
@@ -46,5 +52,3 @@ export const createRequestObjdevice =async (event) => {
       return req_body;
 
 };
-  
-  

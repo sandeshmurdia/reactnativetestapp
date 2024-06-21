@@ -7,6 +7,7 @@ import {
   SRC,
   TECH_STACK,
   ZIPY_BASE_URL,
+  ZIPY_PUBLIC_URL,
 } from "./constants";
 // // import { addDataToFile, createFileIfNotExists } from "./FileUtils";
 
@@ -61,7 +62,6 @@ export async function streamData() {
     if ((helperVariable.zipyEvents.length >= dataLength ||
         (helperVariable.timerDelay === true && helperVariable.zipyEvents.length > 0)) &&
         helperVariable.sessionExpired === false && sdkinit === true) {
-      console.log('sending data');
       if (helperVariable.zipyEvents.length <= dataLength) {
         dataTill = helperVariable.zipyEvents.length;
       } else {
@@ -70,12 +70,10 @@ export async function streamData() {
 
       if (!isSending) {
         isSending = true;
-        console.log(helperVariable.zipyEvents)
         const reqObj = await createRequestObjdevice(
             helperVariable.zipyEvents.slice(0, dataTill)
         );
-        
-        res = await fetch(ZIPY_BASE_URL + "post", {
+        res = await fetch(ZIPY_PUBLIC_URL + "post", {
           method: POST,
           headers: new Headers({
             Authorization: BEARER_TOKEN,
@@ -83,7 +81,7 @@ export async function streamData() {
           }),
           body: JSON.stringify(reqObj)
         });
-console.log(res.status);
+        console.log(res.status);
         if (res.status === 200) {
           resetTimer();
           isSending = false;

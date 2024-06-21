@@ -16,27 +16,27 @@ import {
 
 import axios from 'axios';
 import zipy from './src';
-import { get } from '@aws-amplify/api';
+// import { get } from '@aws-amplify/api';
 // import Bugsnag from '@bugsnag/react-native';
-import * as Sentry from "@sentry/react-native";
+// import * as Sentry from "@sentry/react-native";
 import Bugsnag from '@bugsnag/react-native';
 
 const HomeScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
   const handleButton1Click = () => {
-// zipy.logMessage({message : 'Your custom message', exceptionObj: {'s': 'Your custom message'}});
+zipy.logMessage({message : 'Your custom message', exceptionObj: {'custom key': 'Your custom message'}});
 
   };
 
   const handleButton2Click = () => {
-    // zipy.logException({message : 'Your custom message', exceptionObj: {'asasas': 'Your custom message'}});
-    Sentry.nativeCrash();
+    zipy.logException({message : 'Your custom message', exceptionObj: {'custome key': 'Your custom message'}});
+    // Sentry.nativeCrash();
 
   };
 
 
   const handleButton6Click = () => {
-    // zipy.logException({message : 'Your custom message', exceptionObj: {'asasas': 'Your custom message'}});
-    Bugsnag.notify(new Error('Test error'))
+    zipy.logException({message : 'Your custom message', exceptionObj: {'custome key': 'Your custom message'}});
+    // Bugsnag.notify(new Error('Test error'))
 
   };
 

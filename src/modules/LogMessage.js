@@ -11,7 +11,8 @@ export const logMessage = async (
 }
   ) => {
 // console.log('zipy log');
-  if (data?.data?.logs_capture) {
+
+  if ((data?.data?.custom_logs)) {
     try {
      if(maxLength >= 0){
       message = message.substring(0,maxLength);

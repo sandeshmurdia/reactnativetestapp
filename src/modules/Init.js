@@ -1,6 +1,6 @@
 import {createFileIfNotExists, deleteDataFromFile} from '../utils/FileUtils';
-import {ZIPY_BASE_URL} from '../utils/constants';
-import {generateSessionId} from '../utils/helper';
+import {ZIPY_BASE_URL, ZIPY_PUBLIC_URL} from '../utils/constants';
+import {generateSessionId, cleanSessionFolder} from '../utils/helper';
 import ContextualInfo from './ContextualInfo';
 import DeviceInfo from './DeviceInformation';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -8,6 +8,8 @@ import Interceptor from './Interceptor';
 import ErrorHandling from './ErrorHandling';
 import CurrentAppState from './AppState';
 import {streamData} from '../utils/ApiCall';
+import { captureAndSendSnapshot, watchDirectory } from './SnapshotCapture';
+import startProfiler from './Profiling';
 
 let data = null;
 let api_key = '';
@@ -27,30 +29,45 @@ export const Init = async key => {
   api_key = key;
   try {
     sdkinit = false;
-    const response = await fetch(ZIPY_BASE_URL + 'verify/' + key);
+    const response = await fetch(ZIPY_PUBLIC_URL + 'mobile-service/verify/' + key);
+    console.log(response.status);
     const json = await response.json();
-    console.log(json, 'Got enabled');
     data = json;
-
     const sessionId = generateSessionId();
     await AsyncStorage.setItem('session_id', `${sessionId}`);
     await AsyncStorage.setItem('session_starttime', `${Date.now()}`);
 
-    if (data?.data?.logs_capture) {
-      await DeviceInfo();
+    if(data?.data?.device_info){
+    await DeviceInfo();
+    }
+    if(data?.data?.contextual_info){
       await ContextualInfo();
     }
   } catch (error) {
     console.error('[INIT] Error:', error);
   }
 
+  if(data?.data?.error_exception){
   ErrorHandling();
+  }
+  if(data?.data?.network_call){
   Interceptor();
+  }
   sdkinit = true;
 
   // CurrentAppState();
-
+  helperVariable.sessionLengthinMin = data?.data?.sessionlength_min || 10;
+  helperVariable.streamDataTime = data?.data?.stream_datasec || 5;
   addSdkTimer();
+
+  if(data?.data?.screenshot_cap){
+  captureAndSendSnapshot();
+  watchDirectory();
+  }
+
+  if(data?.data?.profiler){
+  startProfiler();
+  }
 
   console.log('zipy init working');
 };
@@ -75,21 +92,18 @@ export function addSdkTimer() {
     if (helperVariable.sessionExpired) {
       helperVariable.sessionstartTime = Date.now();
     }
-console.log(helperVariable.zipyEvents.length)
     if (helperVariable.sessionExpired && helperVariable.zipyEvents.length > 0) {
       helperVariable.sessionExpired = false;
       await zipyReinit();
     }
-
     if (
       Math.floor(Date.now() / 1000) >=
       helperVariable.lastActivitytime + helperVariable.sessionLengthinMin * 60
     ) {
       helperVariable.sessionExpired = true;
     }
-
     streamData();
-  }, 2000);
+  }, data?.data?.sdk_timersec * 1000 || 2000);
 }
 
 export async function zipyReinit() {

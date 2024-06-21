@@ -3,6 +3,7 @@ import {
 } from "../utils/constants";
 import DeviceInfo from "react-native-device-info";
 import { helperVariable } from "./Init";
+import { Dimensions, useWindowDimensions } from 'react-native';
 
 const DeviceInformation = async () => {
   try {
@@ -13,6 +14,8 @@ const DeviceInformation = async () => {
     const deviceModel = DeviceInfo.getModel(); // Get the device model
     const deviceName = DeviceInfo.getDeviceNameSync(); // Get the device name
     const systemName = DeviceInfo.getSystemName(); // Get the device operating system name
+    const { width, height } = Dimensions.get('window');
+
     const events_data = {
       eventType: DEVICEINFO,
       zms_version: appVersion,
@@ -22,15 +25,14 @@ const DeviceInformation = async () => {
       device_model: deviceModel,
       device_name: deviceName,
       system_name: systemName,
+      screen_dimensions: `${Math.round(width)} X ${Math.round(height)}`
     };
-
-
+    
     helperVariable.zipyEvents.push(events_data);
-
     helperVariable.lastActivitytime = Math.floor(Date.now() / 1000);
 
   } catch (error) {
-    // console.log("Error in DeviceInformation: ", error);
+    console.log("Error in DeviceInformation: ", error);
   }
 };
 

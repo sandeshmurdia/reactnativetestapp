@@ -7,7 +7,7 @@ import { formatTimestamp } from "../utils/helper";
 
 export const Interceptor = () => {
 
-  if (data?.data?.network_capture) {
+  if ((data?.data?.network_capture)) {
     // console.log('Network capture is enabled');
     const originalFetch = fetch;
 

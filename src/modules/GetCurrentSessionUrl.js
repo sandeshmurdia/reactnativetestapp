@@ -9,7 +9,7 @@ export const getCurrentSessionUrl = async (
         const sessionid = (await AsyncStorage.getItem("session_id"));
 
          const currentUrl =
-            `https://mobileapp.zipy.ai/${api_key}/${data?.data?.customer_id}/mobile-replay-cont?s_id=${sessionid}`;
+            `https://mobileapp.zipy.ai/${api_key}/${data?.data?.c_id}/mobile-replay-cont?s_id=${sessionid}`;
         return currentUrl;
       } else {
         return '';

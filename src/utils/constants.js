@@ -7,7 +7,8 @@ export const EUZ_ID = Math.floor(Math.random() * 100000);
 export const EUE_ID = Math.floor(Math.random() * 100000);
 export const LOGDATA = [];
 export const SRC = "MOBILE";
-export const ZIPY_BASE_URL = "https://mobileservice.zipy.ai/";
+export const ZIPY_BASE_URL = "https://servicesqa.zipy.ai/";
+export const ZIPY_PUBLIC_URL = "https://mobileservice.zipy.ai/";
 export const ANR = "ANR";
 export const NETWORK = "NETWORK";
 export const LOG = "LOG";
@@ -36,6 +37,8 @@ export const LONG_TAP = "Long_TAP";
 export const DOUBLE_TAP = "Double_TAP";
 export const UNHANDLED_EXCEPTION = "Unhandled_Exception";
 export const dataLength = 20;
+export const PROFILING_INFO = "Profiling_INFO";
+
 
 
 
