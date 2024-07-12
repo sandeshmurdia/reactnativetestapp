@@ -5,17 +5,20 @@ Bugsnag.start();
  * @format
  */
 
-import {AppRegistry} from 'react-native';
+import {AppRegistry, NativeModules} from 'react-native';
 import {name as appName} from './app.json';
 
-import zipy from './src';
+import zipy from 'zipyai-react-native';
 import MyApp from './App';
-import {GestureCapture}  from './src';
 // import Instabug, { InvocationEvent } from 'instabug-reactnative';
 
-zipy.init('6d2b9556');
+zipy.init('e100d24c');
 // import {endAppStartup, initialize} from '@embrace-io/react-native';
 import React from 'react';
+import { withGestureCapture } from "zipyai-react-native";
+// import {multiply} from 'zipy-test';
+
+
 // import BugsnagPerformance from '@bugsnag/react-native-performance'
 
 // Instabug.init({
@@ -56,13 +59,14 @@ const Appp = () => {
   //     }
   //   });
   // }, []);
-
+  // multiply(2,3);
+// NativeModules.ZipyaiReactNative.crash();
 // BugsnagPerformance.start({ apiKey: 'b9f500c4aaf6b41e06f94b511e4bfab0' })
     return (
-      <GestureCapture>
+      // <GestureCapture>
         <MyApp />
-      </GestureCapture>
+      // </GestureCapture>
     );
   };
 
-AppRegistry.registerComponent(appName, () => Appp);
+AppRegistry.registerComponent(appName, () => withGestureCapture(Appp));

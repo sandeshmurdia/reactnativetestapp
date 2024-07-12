@@ -32,7 +32,7 @@
 // } from '@aws-amplify/ui-react-native';
 
 // import axios from 'axios';
-// import zipy from './src';
+// import zipy from 'react-native-zipy-library';
 // import {get} from '@aws-amplify/api';
 
 // const App = () => {
@@ -201,7 +201,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Button, Text, View , StyleSheet, TextInput} from 'react-native';
 import HomeScreen from './Homescreen';
-import zipy, { ScreenNavigation } from './src';
+import zipy, { ScreenNavigation } from 'zipyai-react-native';
 import * as Sentry from '@sentry/react-native';
 
 Sentry.init({

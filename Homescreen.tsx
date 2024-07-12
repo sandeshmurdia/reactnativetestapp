@@ -15,7 +15,7 @@ import {
 
 
 import axios from 'axios';
-import zipy from './src';
+import zipy from 'zipyai-react-native';
 // import { get } from '@aws-amplify/api';
 // import Bugsnag from '@bugsnag/react-native';
 // import * as Sentry from "@sentry/react-native";
@@ -30,56 +30,39 @@ zipy.logMessage({message : 'Your custom message', exceptionObj: {'custom key': '
   const handleButton2Click = () => {
     zipy.logException({message : 'Your custom message', exceptionObj: {'custome key': 'Your custom message'}});
     // Sentry.nativeCrash();
-
   };
 
 
   const handleButton6Click = () => {
-    zipy.logException({message : 'Your custom message', exceptionObj: {'custome key': 'Your custom message'}});
+    // zipy.logException({message : 'Your custom message', exceptionObj: {'custome key': 'Your custom message'}});
     // Bugsnag.notify(new Error('Test error'))
 
   };
 
   const handleButton4Click = async () => {
-    try {
+    // try {
      let d = e;
-    } catch (error) {
-      console.error(error);
-    }
+    // } catch (error) {
+      // console.error(error);
+    // }
 };
 
 
   
   const handleButton3Click = async () => {
-    const url = 'https://jsonplaceholder.typicode.com/posts';
+    const url = 'https://mobilecollector.zipy.ai/';
   
-    // Define the custom headers
-    const headers = {
-      'X-Custom-Header': 'Custom-Header-Value',
-      'Authorization': 'Bearer YourAccessToken',
-      'Content-Type': 'application/json', // Specify the content type as JSON
-      // Add any other headers you need
-    };
-  
-    // Define your payload data
-    const payloadData = {
-      key1: 'value1',
-      key2: 'value2',
-      // Add any other data you want to send
-    };
-  
-    // Create the options object with headers and body
-    const options = {
-      method: 'POST',
-      headers: headers,
-      body: JSON.stringify(payloadData) // Stringify the payload data
-    };
-  
+   
     try {
-      const response = await fetch(url, options);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
+      const response = await fetch(url + "post", {
+        method: "POST",
+        headers: new Headers({
+          Authorization:  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODI2MDc1NDV9.gkx_shFwp_XW6XsqC5ZRXXfSlrN-FjS_Y2o1aciqFP4",
+          "Content-Type": "application/json",
+        }),
+        body: JSON.stringify({"battery_status": "100%", "charging_status": "false", "date": "10:7:2024", "device_orientation": "portrait", "eventType": "Contextual_INFO", "free_storage": "23GB", "ipAddress": "106.51.85.238", "location": "Bengaluru, Karnataka, India", "time": "17:30:23", "total_memory": "3771MB", "total_storage": "50GB", "used_memory": "262MB"})
+      });
+  
       const jsonResponse = await response.json();
       console.log('Response:', jsonResponse);
     } catch (error) {
@@ -94,7 +77,9 @@ zipy.logMessage({message : 'Your custom message', exceptionObj: {'custom key': '
 
     // Bugsnag.notify(new Error('Test error'))
 
-    const url = 'https://jsonplaceholder.typicode.com/todos';
+    console.log('ddd')
+
+    const url = 'https://mobilecollector.zipy.ai/mobile-service/verify/e100d24c';
   
     // Define the custom headers
     const headers = {
@@ -113,16 +98,14 @@ zipy.logMessage({message : 'Your custom message', exceptionObj: {'custom key': '
   
     // Create the options object with headers and body
     const options = {
-      method: 'GET',
-      headers: headers,
-    };
+      method: 'GET'    };
   
     fetch(url, options)
       .then(response => response.json())
       .then(json => console.log('Response:', json))
       .catch(error => console.error('An error occurred:', error));
 
-      throw new Error('My first Sentry error!');
+      // throw new Error('My first Sentry error!');
   };
   
   // const handleButton4Click = () => {
