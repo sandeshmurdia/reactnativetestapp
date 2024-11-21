@@ -12,7 +12,7 @@ import zipy from 'zipyai-react-native';
 import MyApp from './App';
 // import Instabug, { InvocationEvent } from 'instabug-reactnative';
 
-zipy.init('e100d24c');
+zipy.init('xxxxx');
 // import {endAppStartup, initialize} from '@embrace-io/react-native';
 import React from 'react';
 import { withGestureCapture } from "zipyai-react-native";
